@@ -7,5 +7,6 @@ To use the AWS Cloud Development Kit (CDK) to bootstrap your environment for dep
 
 2- Initialize project:
 
-`git clone <github-clone-url> <your-project-name>'
+`git clone GITHUB_CLONE_URL YOUR_PROJECT_NAME'
+
 git clone https://github.com/mnamvarcfd/AWS-CDK-Refrence-guide.git CI_CD_cdk
