@@ -11,10 +11,10 @@ export class EC2_Stack extends cdk.Stack {
 
   constructor(scope: Construct, id: string, stackName: string, appName: string, machinName: string, VPC: VPC_Stack, SG: SecurityGroup_Stack) {
     super(scope, id, {
-        stackName: appName + '-' + stackName,  
+        stackName: id,  
       });
 
-    const instance = new ec2.Instance(this, 'targetInstance', {
+    const instance = new ec2.Instance(this, id , {
         instanceName: machinName,
         vpc: VPC.vpc,   
         vpcSubnets: {

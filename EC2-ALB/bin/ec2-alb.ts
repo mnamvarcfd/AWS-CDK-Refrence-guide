@@ -22,7 +22,7 @@ const ALB = new ALB_Stack(app, "EC2ALB-ALB-id", "EC2ALB", "ALB", VPC, SG);
 const EC2_first_Target = new elbv2_targets.InstanceTarget(EC2_first.EC2, 80);
 const EC2_secnd_Target = new elbv2_targets.InstanceTarget(EC2_secnd.EC2, 80);
 
-ALB.targetGroup.addTarget(EC2_first_Target, { weight: 1 });
-ALB.targetGroup.addTarget(EC2_secnd_Target, { weight: 1 });
+ALB.targetGroup.addTarget(EC2_first_Target);
+ALB.targetGroup.addTarget(EC2_secnd_Target);
 
    
