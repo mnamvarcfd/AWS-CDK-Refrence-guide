@@ -2,11 +2,10 @@
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
 import { VPC_Stack } from '../lib/VPC_Stack';
+import * as elbv2_targets from 'aws-cdk-lib/aws-elasticloadbalancingv2-targets';
 import { SecurityGroup_Stack } from '../lib/SecurityGroup_Stack';
 import { EC2_Stack } from '../lib/EC2_Stack';
-import { TargetGroup_Stack } from '../lib/TargetGroup_Stack';
 import { ALB_Stack } from '../lib/ALB_Stack';
-import * as elbv2_targets from 'aws-cdk-lib/aws-elasticloadbalancingv2-targets';
 
 const app = new cdk.App();
 
