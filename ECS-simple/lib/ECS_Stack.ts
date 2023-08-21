@@ -1,18 +1,17 @@
 import * as cdk from 'aws-cdk-lib';
 import * as ecs from 'aws-cdk-lib/aws-ecs';
 import * as ec2 from 'aws-cdk-lib/aws-ec2';
-import { VPC_Stack } from './VPC_Stack';
 import { Construct } from 'constructs';
-
-import * as elbv2 from 'aws-cdk-lib/aws-elasticloadbalancingv2';
+import { VPC_Stack } from './VPC_Stack';
+import { ALB_Stack } from './ALB_Stack';
 
 
 export class ECS_Stack extends cdk.Stack {
  
-  constructor(scope: Construct, id: string, stackName: string, VPC: VPC_Stack, albSecurityGroup: ec2.SecurityGroup) {
+  constructor(scope: Construct, id: string, stackName: string, appName: string, VPC: VPC_Stack, ALB: ALB_Stack) {
     super(scope, id, {
         stackName: stackName, 
-      });
+    });
 
     const cluster = new ecs.Cluster(this, 'ECSCluster-id', {
         clusterName: "ECSCluster",
@@ -31,7 +30,7 @@ export class ECS_Stack extends cdk.Stack {
   
 
     container.addPortMappings({
-      containerPort: 80, // The port your application inside the container listens on
+      containerPort: 80, 
     });
 
     const ecsSG = new ec2.SecurityGroup(this, "ECS-SecurityGroup", {
@@ -40,7 +39,7 @@ export class ECS_Stack extends cdk.Stack {
     });
 
     ecsSG.addIngressRule(
-      albSecurityGroup,
+      ALB.albSecurityGroup,
       ec2.Port.tcp(80)
     );
  

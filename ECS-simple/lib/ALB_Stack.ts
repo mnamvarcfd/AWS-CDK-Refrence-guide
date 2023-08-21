@@ -9,7 +9,7 @@ export class ALB_Stack extends cdk.Stack {
 
   public readonly albSecurityGroup: ec2.SecurityGroup;
 
-  constructor(scope: Construct, id: string, name: string, VPC: VPC_Stack) {
+  constructor(scope: Construct, id: string, stackName: string, appName: string, VPC: VPC_Stack) {
     super(scope, id);
 
 
